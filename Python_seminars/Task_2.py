@@ -5,11 +5,16 @@
 # 123 -> 6 (1 + 2 + 3)
 # 100 -> 1 (1 + 0 + 0) |
 
-x = input("Введите треззначное число: ")
-sum = 0
-if len(x) !=3:
-    print("Введено не верное число")
-else:
-    for i in x:
-        sum += int(i)
-    print(sum)
+# x = input("Введите треззначное число: ")
+# sum = 0
+# if len(x) !=3:
+#     print("Введено не верное число")
+# else:
+#     for i in x:
+#         sum += int(i)
+#     print(sum)
+
+x = ""
+while x.isdigit() != True or len(x) != 3 or int(x) < 0:
+    x = input("Введите целое треззначное положительное число: ")
+print(f"{x} -> {int(x[0]) + int(x[1]) + int(x[2])} ({x[0]} + {x[1]} + {x[2]})")
