@@ -10,9 +10,42 @@
 #     6
 #     -> 5
 
-# from random import randint
-#
-# n = int(input('Введите количество монеток: '))
-# m = []
-# for i in range(n):
-# m.append(randint(0, 1))
+from random import randint
+
+n = int(input('Введите количество элементов в массиве (N): '))
+r = 0
+m = []
+for i in range(n):
+    m.append(randint(0, 30))
+    if m[i] > r:
+        r = m[i]
+print(m)
+x = int(input('Введите искомое число (X): '))
+
+for i in m:
+    if i > x:
+        if i - x < r:
+            ymax = i
+            ymin = -1
+            r = i - x
+        elif i - x == r:
+            ymax = i
+
+    elif i < x:
+        if x - i < r:
+            ymin = i
+            ymax = -1
+            r = x - i
+        elif x - i == r:
+            ymin = i
+    else:
+        ymin = i
+        ymax = -1
+        break
+if ymin == -1:
+    print(f"Самый близкий по величине элемент к заданному числу X: {ymax}")
+elif ymax == -1:
+    print(f"Самый близкий по величине элемент к заданному числу X: {ymin}")
+else:
+    print(f"Самые близкие по величине элементы к заданному числу X: {ymin} и {ymax}")
+
