@@ -11,4 +11,15 @@
 #     3
 #     -> 1
 
+from random import randint
 
+n = int(input('Введите количество элементов в массиве (N): '))
+x = int(input('Введите искомое число (X): '))
+count = 0
+m = []
+for i in range(n):
+    m.append(randint(0, 30))
+    if m[i] == x:
+        count += 1
+print(m)
+print(f" -> {count}")
