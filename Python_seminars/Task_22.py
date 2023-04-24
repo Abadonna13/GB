@@ -13,19 +13,13 @@ set_1 = set()
 set_2 = set()
 # list_1 = list()
 a = [int(x) for x in input("Числа 1 множества через пробел").split()]
-print(a)
 k = set(a)
-print(k)
 for i in k:
     set_1.add(i)
-print(set_1)
 b = [int(x) for x in input("Числа 2 множества через пробел").split()]
-print(b)
 k1 = set(b)
-print(k1)
 for i in k1:
     set_2.add(i)
-print(set_2)
 lok = set_1 & set_2
 kool = list(lok)
 kool.sort()
