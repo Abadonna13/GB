@@ -9,12 +9,13 @@
 
 a = [int(x) for x in input("Числа множества через пробел").split()]
 count = 0
-if len(a) > 3:
-    for i in range(2, len(a)-1):
-        if a[i - 1] < a[i] < a[i + 1]:
+if len(a) > 2:
+    for i in range(1, len(a)-1):
+        if a[i - 1] < a[i] > a[i + 1]:
             count += 1
     print(count)
-print("Недостаточно элементов массива")
+else:
+    print("Недостаточно элементов массива")
 
 
 
