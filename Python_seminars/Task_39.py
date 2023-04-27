@@ -4,5 +4,22 @@
 # первом массиве, затем N чисел - элементы массива. Затем число M - количество элементов
 # во втором массиве. Затем элементы второго массива
 
-a = [int(x) for x in input("Числа множества через пробел").split()]
-a = [int(x) for x in input("Числа множества через пробел").split()]
+from random import randint
+
+def randomList(n):
+    s = []
+    for i in range(n):
+        s.append(randint(1,9))
+    return s
+
+x1 = randomList(int(input("Введите размер первого массива: ")))
+x2 = randomList(int(input("Введите размер первого массива: ")))
+
+print(x1)
+print(x2)
+
+y = []
+for i in range(len(x1)):
+    if x1[i] not in x2:
+        y.append(x1[i])
+print(y)
