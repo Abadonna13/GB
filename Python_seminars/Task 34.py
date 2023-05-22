@@ -16,23 +16,22 @@
 # Парам пам-пам
 
 glas = ["а", "е", "ё", "и", "о", "у", "ы", "э", "ю", "я"]
-s = "пара-ра-рам рам-пам-папам па-ра-па-"
+s = "пара-ра-рам рам-пам-папам па-ра-па-пам"
 #stroka = input("Введите строку стихотворения").split()
 stroka = s.lower().split()
-
+flag = True
 for i in range(len(stroka)):
     count = 0
-
     for j in stroka[i]:
         if j in glas:
             count += 1
     if i == 0:
         slog = count
-        flag = True
     else:
         if slog != count:
-            flag = False
-            print("Пам парам")
-            break
+             flag = False
+if flag == True:
     print("Парам пам-пам")
+else:
+    print("Пам парам")
 
