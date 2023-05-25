@@ -21,12 +21,13 @@ def show_menu() -> int:
           "3. Найти абонента по номеру телефона\n"
           "4. Добавить абонента в справочник\n"
           "5. Сохранить справочник в текстовом формате\n"
-          "6. Закончить работу")
+          "6. Закончить работу\n")
+    return int(input(" Введите номер пункта меню: "))
 
 def work_with_phonebook():
     choice = show_menu()
     phone_book = read_csv('phonebook.csv')
-
+    # print(phone_book)
 
     while (choice != 6):
         if choice == 1:
@@ -46,12 +47,15 @@ def work_with_phonebook():
             write_txt(file_name, phone_book)
         choice = show_menu()
 
-def read_csv(filename: str):
+def read_csv(filename: str) -> list:
+    spr = []
     filds = ["Фамилия", "Имя", "Телефон", "Описание"]
-    with open(filename, 'r') as data:
-       spr = []
-       for line in data:
-        zap = dict(zip(filds,data.split(",")))
+    with open(filename, 'r', encoding='utf-8') as data:
+        for line in data:
+            zap = dict(zip(filds,line.strip().split(",")))
+            spr.append(zap)
+            #print(spr)
+    return (spr)
 
 def write_csv(filename: str, data: list):
     with open(filename, 'w', encoding='utf-8') as fout:
@@ -60,3 +64,39 @@ def write_csv(filename: str, data: list):
             for v in data[i].values():
                 s += v + ','
             fout.write(f'{s[:-1]}\n')
+
+def print_result(spr):
+    print(*spr[0].keys())
+    for i in range(len(spr)):
+        s = ''
+        for v in spr[i].values():
+            s += '%-15s' % v
+        print(f'{s[:-1]}\n')
+
+def get_search_name():
+    return input("\nВведите Фамилию: ")
+
+def find_by_name(spr, name):
+    # print(*[x for x in spr if x['Фамилия'] == name][0])
+    return (next((x for x in spr if x["Фамилия"] == name), "Не найдено"))
+
+def get_search_number():
+    return input("\nВведите номер: ")
+
+def find_by_number(spr, number):
+    return (next((x for x in spr if x["Телефон"] == number), "Не найдено"))
+
+def get_new_user():
+    newuser = []
+    newuser.append(input("\nВведите Фамилию: "))
+    newuser.append(input("\nВведите Имя: "))
+    newuser.append(input("\nВведите Телефон: "))
+    newuser.append(input("\nВведите Описание: "))
+    return (newuser)
+
+def add_user(spr, user_data):
+    filds = ["Фамилия", "Имя", "Телефон", "Описание"]
+    zap = dict(zip(filds, user_data))
+    spr.append(zap)
+
+work_with_phonebook()
